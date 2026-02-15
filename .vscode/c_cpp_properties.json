@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${default}",
+                "/usr/local/include"
+            ],
+            "defines": [],
+            "cStandard": "c23",
+            "intelliSenseMode": "macos-clang-arm64",
+            "compilerPath": "/usr/bin/c++",
+            "cppStandard": "c++23",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}

@@ -1,0 +1,5 @@
+---
+BasedOnStyle: LLVM # or Google, Microsoft, etc.
+IndentWidth: 4
+---
+
