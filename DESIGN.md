@@ -90,3 +90,49 @@ The strategy selects an unload station using a two-tier prioritization system:
 * **Second priority:** When comparing stations of the same status
   (both idle or both busy), it selects the one with the shortest
   queue—meaning the fewest trucks waiting in line. 
+
+## 3. Time Management
+* Time will be represented within the simulation as a simple `double`.
+
+## 4. Statistical Outputs
+
+### 4.1 Truck Metrics
+
+**Per-truck tracking:**
+* Trips completed
+* Mining time
+* Travel time
+* Unload time
+* Queue wait time
+* Utilization percentage
+
+**Aggregate metrics:**
+* Average trips per truck
+* Average utilization
+* Total throughput
+
+### 4.2 Station Metrics
+
+**Per-station tracking:**
+* Trucks serviced 
+* Busy time 
+* Idle time 
+* Maximum queue length 
+* Average queue wait time
+* Utilization percentage 
+
+**Aggregate metrics:**
+* Total trucks serviced
+* Average station utilization
+* System bottleneck identification
+
+## 5 Assumptions
+
+1. **Infinite mining sites**: No contention for mining locations
+2. **Homogeneous trucks**: All trucks identical in capability
+3. **Homogeneous stations**: All stations identical in speed
+4. **Fixed travel time**: Distance abstracted away
+5. **No failures**: No breakdowns or maintenance
+6. **No fuel limits**: Unlimited operational capacity
+7. **Instant decisions**: No communication delay
+

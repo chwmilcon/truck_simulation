@@ -1,7 +1,12 @@
 class Truck_simulation 
 {
 public:
-    Truck_simulation() { }
+    // TODO: complete, just to get tests compiling.
+    Truck_simulation(int num_trucks, int num_stations, unsigned int seed = 42) {
+        (void)num_stations;
+        (void)num_trucks;
+        (void)seed;
+    }
     virtual ~Truck_simulation() = default;
     Truck_simulation(const Truck_simulation &obj) = delete;
     Truck_simulation& operator=(const Truck_simulation&) = delete;
@@ -9,6 +14,8 @@ public:
     friend std::ostream& operator<<(std::ostream& ostr, const Truck_simulation& obj) {
         return obj.output(ostr);
     }
+    // TODO: complete, stub to get tests compiling.
+    void run() {}
 protected:
     virtual std::ostream& output(std::ostream& ostr) const {
         ostr << "Truck_simulation:";
@@ -20,9 +27,5 @@ template<>
 struct std::formatter<Truck_simulation> {
   constexpr auto parse(std::format_parse_context& context) {
     return context.begin();
-  }
-  auto format(const Truck_simulation& sVal, std::format_context& context) const { 
-    //return std::format_to(context.out(), "{}", sVal.getValue());
-    return std::format_to(context.out(), "Truck_simulation:");
   }
 };
