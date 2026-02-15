@@ -1,3 +1,42 @@
+#pragma once
+
+// CHW: initial bunch of headers, check for unneeded.
+#include <chrono>
+#include <queue>
+#include <vector>
+#include <memory>
+#include <random>
+#include <mutex>
+#include <atomic>
+#include <optional>
+
+namespace Simulation {
+// Time representation in minutes for the simulation
+using SimTime = double;
+using Clock = std::chrono::steady_clock;
+
+// Constants
+constexpr SimTime MINING_TIME_MIN = 60.0;      // 1 hour in minutes
+constexpr SimTime MINING_TIME_MAX = 300.0;     // 5 hours in minutes
+constexpr SimTime TRAVEL_TIME = 30.0;          // 30 minutes
+constexpr SimTime UNLOAD_TIME = 5.0;           // 5 minutes
+constexpr SimTime SIMULATION_DURATION = 4320.0; // 72 hours in minutes
+
+// TODO: Remove when real ones are here.
+enum EventType {
+};
+class UnloadStation {};
+class MiningTruck {};
+class Event {};
+
+// TODO: Remove when all implemented
+void not_implemented() {
+    throw std::runtime_error("Function not yet implemented");
+}
+
+//
+// Trucking simulation main class
+//
 class Truck_simulation 
 {
 public:
@@ -18,18 +57,58 @@ public:
     void run() {
         not_implemented(); 
     }
+
+    // TODO: complete, stub to get tests compiling.
+    void printStatistics() const {
+        not_implemented(); 
+    }
+// NOTE: reviewer, our team prefers protected over private, this isn't
+// the case for all teams.
 protected:
+    // Event handlers
+    void handleMiningComplete(const Event& event) {
+        (void)event;
+        not_implemented();
+    }
+    void handleArriveAtStation(const Event& event)  {
+        (void)event;
+        not_implemented();
+    }
+    void handleUnloadComplete(const Event& event) {
+        (void)event;
+        not_implemented();
+    }
+    
+    // Helper methods
+    SimTime generateMiningTime();
+    std::shared_ptr<UnloadStation> selectStation();
+    void scheduleEvent(SimTime time, EventType type, 
+                      std::shared_ptr<MiningTruck> truck,
+                      std::shared_ptr<UnloadStation> station = nullptr);
+
+
     virtual std::ostream& output(std::ostream& ostr) const {
         ostr << "Truck_simulation:";
         return ostr;
     }
-    void not_implemented() {
-        throw std::runtime_error("Function not yet implemented");
-    }
+
+// NOTE: Our team makes a separate protected section for member data
+// for internal tooling.
+protected:    
+    // Simulation state
+    SimTime current_time_;
+    std::priority_queue<Event, std::vector<Event>, std::greater<Event>> event_queue_;
+    
+    // Configuration
+    int num_trucks_;
+    int num_stations_;
+    
+    // Entities
+    std::vector<std::shared_ptr<MiningTruck>> trucks_;
+    std::vector<std::shared_ptr<UnloadStation>> stations_;
+    
+    // Random number generation
+    std::mt19937 rng_;
+    std::uniform_real_distribution<SimTime> mining_dist_;            
 };
-template<>
-struct std::formatter<Truck_simulation> {
-  constexpr auto parse(std::format_parse_context& context) {
-    return context.begin();
-  }
-};
+} // namespace
