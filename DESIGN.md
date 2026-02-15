@@ -40,3 +40,53 @@ it can handle thousands of entities without much overhead.
   * Use a `std::priority_queue`
   * Ordered by event time (earliest first)
   * Ensure deterministic event processing ordering
+
+### 2.2. Truck state machine
+* State: Mining
+    * Event: Travel -> Traveling to Station
+    * Event: Complete -> Traveling to Mine
+* State: Traveling to station
+    * Event: Travel 30 min -> Arrive at station
+* State: Arrive at station
+    * Event: Station Busy -> Queue
+    * Event: Station not busy -> Unload
+* State: Queue
+    * Event: Station not busy -> Unload
+* State: Unload
+    * Event: Unload -> Travel to mine
+*State: Travel to mine
+    * Event: Travel -> Minining
+
+**Statistics**
+* Trips completed
+* Time in each state
+* Utilization
+
+### 2.3 Unload Station Model
+**Queue Management:**
+
+* FIFO queue
+* Trucks commit to selected queue
+
+**States:**
+
+* **Idle**
+* **Busy**
+
+**Statistics**
+
+* Trucks serviced
+* Busy vs idle time
+* Maximum queue length observed
+* Average queue wait time
+* Utilization
+
+### 2.4 Station Selection Algorithm
+
+The strategy selects an unload station using a two-tier prioritization system:
+* **First priority:** It always prefers idle stations over busy
+  ones. If any station is currently idle (not processing a truck), it
+  will be chosen over all busy stations. 
+* **Second priority:** When comparing stations of the same status
+  (both idle or both busy), it selects the one with the shortest
+  queue—meaning the fewest trucks waiting in line. 
