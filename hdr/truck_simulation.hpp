@@ -15,13 +15,17 @@ public:
         return obj.output(ostr);
     }
     // TODO: complete, stub to get tests compiling.
-    void run() {}
+    void run() {
+        not_implemented(); 
+    }
 protected:
     virtual std::ostream& output(std::ostream& ostr) const {
         ostr << "Truck_simulation:";
         return ostr;
     }
-
+    void not_implemented() {
+        throw std::runtime_error("Function not yet implemented");
+    }
 };
 template<>
 struct std::formatter<Truck_simulation> {
