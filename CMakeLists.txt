@@ -58,3 +58,48 @@ target_link_libraries(simulation_test
 )
 include(GoogleTest)
 gtest_discover_tests(simulation_test)
+
+add_executable(test_event tests/test_event.cpp)
+target_include_directories(test_event PRIVATE ${CMAKE_SOURCE_DIR})
+target_link_libraries(test_event 
+    truck_simulation_lib 
+    GTest::gtest_main
+)
+include(GoogleTest)
+gtest_discover_tests(test_event)
+
+add_executable(test_mining_truck tests/test_mining_truck.cpp)
+target_include_directories(test_mining_truck PRIVATE ${CMAKE_SOURCE_DIR})
+target_link_libraries(test_mining_truck 
+    truck_simulation_lib 
+    GTest::gtest_main
+)
+include(GoogleTest)
+gtest_discover_tests(test_mining_truck)
+
+add_executable(test_unload_station tests/test_unload_station.cpp)
+target_include_directories(test_unload_station PRIVATE ${CMAKE_SOURCE_DIR})
+target_link_libraries(test_unload_station 
+    truck_simulation_lib 
+    GTest::gtest_main
+)
+include(GoogleTest)
+gtest_discover_tests(test_unload_station)
+
+add_executable(test_truck_stats tests/test_truck_stats.cpp)
+target_include_directories(test_truck_stats PRIVATE ${CMAKE_SOURCE_DIR})
+target_link_libraries(test_truck_stats 
+    truck_simulation_lib 
+    GTest::gtest_main
+)
+include(GoogleTest)
+gtest_discover_tests(test_truck_stats)
+
+add_executable(test_station_stats tests/test_station_stats.cpp)
+target_include_directories(test_station_stats PRIVATE ${CMAKE_SOURCE_DIR})
+target_link_libraries(test_station_stats 
+    truck_simulation_lib 
+    GTest::gtest_main
+)
+include(GoogleTest)
+gtest_discover_tests(test_station_stats)
