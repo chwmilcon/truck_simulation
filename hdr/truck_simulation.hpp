@@ -25,11 +25,7 @@ class Truck_simulation
 {
 public:
     // TODO: complete, just to get tests compiling.
-    Truck_simulation(int num_trucks, int num_stations, unsigned int seed = 42) {
-        (void)num_stations;
-        (void)num_trucks;
-        (void)seed;
-    }
+    Truck_simulation(int num_trucks, int num_stations, unsigned int seed = 42);
     virtual ~Truck_simulation() = default;
     Truck_simulation(const Truck_simulation &obj) = delete;
     Truck_simulation& operator=(const Truck_simulation&) = delete;
@@ -37,32 +33,17 @@ public:
     friend std::ostream& operator<<(std::ostream& ostr, const Truck_simulation& obj) {
         return obj.output(ostr);
     }
-    // TODO: complete, stub to get tests compiling.
-    void run() {
-        not_implemented(); 
-    }
+    void run();
+    void printStatistics() const;
 
-    // TODO: complete, stub to get tests compiling.
-    void printStatistics() const {
-        not_implemented(); 
-    }
 // NOTE: reviewer, our team prefers protected over private, this isn't
 // the case for all teams.
 protected:
     // Event handlers
-    void handleMiningComplete(const Event& event) {
-        (void)event;
-        not_implemented();
-    }
-    void handleArriveAtStation(const Event& event)  {
-        (void)event;
-        not_implemented();
-    }
-    void handleUnloadComplete(const Event& event) {
-        (void)event;
-        not_implemented();
-    }
-    
+    void handleMiningComplete(const Event& event);
+    void handleArriveAtStation(const Event& event);
+    void handleUnloadComplete(const Event& event);
+
     // Helper methods
     SimTime generateMiningTime();
     std::shared_ptr<UnloadStation> selectStation();
