@@ -9,4 +9,5 @@
   could be, or that it could be developed further.
 * `CHW` comments (my initials) are left as place holders for me while
   I'm programming.
-* Consider putting a `watch dog` to prevent system from looping infinitely.
+* Makefile is for convenience, usually this would be a Justfile, not
+  assume that is on reviewer's machine 
