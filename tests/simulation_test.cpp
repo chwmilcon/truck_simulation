@@ -1,6 +1,11 @@
 #include <gtest/gtest.h>
 #include "truck_simulation.hpp"
 
+//
+// tests in this file were made as high level tests
+// to help drive initial code compilation.
+//
+
 class SimulationTest : public ::testing::Test {
 protected:
     void SetUp() override {}
